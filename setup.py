@@ -7,7 +7,7 @@ with open('README.rst') as readme_file:
     readme = readme_file.read()
 
 requirements = [
-    'h5py>=6.0',
+    'h5py>=2.6.0',
     'termcolor>=1.1.0',
 ]
 
