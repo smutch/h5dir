@@ -13,6 +13,7 @@ requirements = [
 
 setup(
     name='h5dir',
+    py_modules=['h5dir'],
     version='0.1',
     description="Pretty print a concise listing of an hdf5 file's contents.",
     long_description=readme,
