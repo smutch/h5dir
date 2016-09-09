@@ -21,7 +21,7 @@ setup(
     url='https://github.com/smutch/h5dir',
     entry_points={
         'console_scripts': [
-            'h5dir=h5dir:h5dir'
+            'h5dir=h5dir:main'
         ]
     },
     include_package_data=True,

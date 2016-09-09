@@ -31,7 +31,7 @@ def walk(k, v, depth=0):
         pass
 
 
-if __name__ == "__main__":
+def main():
     fname = os.path.expandvars(os.path.expanduser(sys.argv[1]))
     fd = h5.File(fname, 'r')
     for k, v , d in walk('/', fd):
@@ -46,3 +46,7 @@ if __name__ == "__main__":
                 info = _color_value('{}'.format(v))
             print("{}{} ➪ {}".format(d*'  ', k, info))
     fd.close()
+
+
+if __name__ == "__main__":
+    main()
