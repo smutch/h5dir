@@ -20,7 +20,7 @@ def walk(k, v, depth=0):
             if type(v) is h5.AttributeManager:
                 name = 'ª {}'.format(ik)
             else:
-                name = '{}/{}'.format(k, ik)
+                name = '{}'.format(ik)
             name = name.lstrip('/')
             yield name, iv, depth
             try:
