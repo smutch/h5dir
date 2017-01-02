@@ -5,10 +5,7 @@ import sys
 from functools import partial
 import h5py as h5
 from termcolor import colored
-
-_color_value = partial(colored, color='yellow')
-_color_group = partial(colored, color='magenta')
-_color_info = partial(colored, color='grey', attrs=['bold'])
+import click
 
 def walk(k, v, depth=0):
     try:
@@ -31,8 +28,20 @@ def walk(k, v, depth=0):
         pass
 
 
-def main():
-    fname = os.path.expandvars(os.path.expanduser(sys.argv[1]))
+@click.command()
+@click.option('--color/--nocolor', default=True)
+@click.argument('fname', type=click.Path(exists=True))
+def main(fname, color):
+    if color:
+        _color_value = partial(colored, color='yellow')
+        _color_group = partial(colored, color='magenta')
+        _color_info = partial(colored, color='grey', attrs=['bold'])
+    else:
+        _color_value = lambda s: s
+        _color_group = lambda s: s
+        _color_info = lambda s: s
+
+    fname = os.path.expandvars(fname)
     fd = h5.File(fname, 'r')
     for k, v , d in walk('/', fd):
         if type(v) is h5.Group:
